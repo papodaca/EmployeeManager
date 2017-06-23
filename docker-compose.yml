@@ -1,0 +1,14 @@
+version: '3'
+services:
+  web:
+    build: .
+    depends_on:
+      - postgres
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/app
+    links:
+      - postgres
+  postgres:
+    image: postgres
