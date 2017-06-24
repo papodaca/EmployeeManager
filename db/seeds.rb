@@ -1,7 +1,26 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+
+if Organization.all.count == 0
+  
+  orgs = []
+  ["HR", "Research", "Support", "Finance", "Matinence"].each do |name|
+    org = Organization.new
+    org.name = name
+    org.save()
+    orgs.push org
+  end
+
+  employees_file = File.read Dir.pwd + "/db/data.json"
+  employees = JSON.parse employees_file
+  employees.each do |employee|
+    emp = Employee.new
+    emp.name = employee["name"]
+    emp.email = employee["email"]
+    emp.address = employee["address"]
+    emp.dob = employee["dob"]
+    emp.gender = employee["gender"]
+    emp.phone = employee["phone"]
+    emp.ssn = employee["ssn"]
+    emp.organization_id = orgs[rand(orgs.length)].id
+    emp.save()
+  end
+end
