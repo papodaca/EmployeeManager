@@ -11,32 +11,34 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :employee_name %>
+  <div class="form-group row">
+    <%= form.label :name, class: "col-2 col-form-label" %>
+    <%= form.text_field :name, id: :employee_name, class: "form-control col-6" %>
   </div>
 
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email, id: :employee_email %>
+  <div class="form-group row">
+    <%= form.label :email, class: "col-2 col-form-label" %>
+    <%= form.text_field :email, id: :employee_email, class: "form-control col-6" %>
   </div>
 
-  <div class="field">
-    <%= form.label :ssn %>
-    <%= form.text_field :ssn, id: :employee_ssn %>
+  <div class="form-group row">
+    <%= form.label :ssn, class: "col-2 col-form-label" %>
+    <%= form.text_field :ssn, id: :employee_ssn, class: "form-control col-6" %>
   </div>
 
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address, id: :employee_address %>
+  <div class="form-group row">
+    <%= form.label :address, class: "col-2 col-form-label" %>
+    <%= form.text_area :address, id: :employee_address, class: "form-control col-6" %>
   </div>
 
-  <div class="field">
-    <%= form.label :organization_id %>
-    <%= form.text_field :organization_id, id: :employee_organization_id %>
+  <div class="form-group row">
+    <%= form.label :organization_id, class: "col-2 col-form-label" %>
+    <%= form.select :organization_id, Organization.all.map { |org| [org.name, org.id] }, { include_blank: true }, id: :employee_organization_id, class: "form-control col-6" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="form-group row">
+    <div class="offset-2 col-6">
+      <%= form.submit class: "btn btn-primary" %>
+    </div>
   </div>
 <% end %>

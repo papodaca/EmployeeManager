@@ -1,0 +1,27 @@
+<h1>Organizations</h1>
+<% @organizations.each do |org| %>
+  <div class="card">
+    <div class="card-header">
+      <%= link_to org.name, organization_path(org) %>
+    </div>
+    <div class="card-block">
+      <table class="table table-sm table-striped">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <% org.employees.all.each do |employee| %>
+            <tr>
+              <td><%= link_to employee.name, employee_path(employee) %></td>
+              <td><%= link_to employee.email, employee_path(employee) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+<% end %>

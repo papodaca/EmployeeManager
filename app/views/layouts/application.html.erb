@@ -10,7 +10,31 @@
   </head>
 
   <body>
-    <%= yield %>
+    <nav class="navbar navbar-toggleable-md navbar-light bg-faded">
+      <div class="container">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <%= link_to "Employee Manager", root_path, class: "navbar-brand" %>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <%= link_to "<i class=\"fa fa-industry\"></i> Home".html_safe, root_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "<i class=\"fa fa-users\"></i> Employees".html_safe, employees_path, class: "nav-link" %>
+            </li>
+            <li class="nav-item">
+              <%= link_to "<i class=\"fa fa-sitemap\"></i> Organizations".html_safe, organizations_path, class: "nav-link" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="container">
+      <%= yield %>
+    </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js"></script>

@@ -5,5 +5,25 @@
   <%= @organization.name %>
 </p>
 
+<table class="table table-sm table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+      <th>Address</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @organization.employees.all.each do |employee| %>
+      <tr>
+        <td><%= link_to employee.name, employee_path(employee) %></td>
+        <td><%= link_to employee.email, employee_path(employee) %></td>
+        <td><%= link_to employee.address, employee_path(employee) %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
 <%= link_to 'Edit', edit_organization_path(@organization) %> |
 <%= link_to 'Back', organizations_path %>
