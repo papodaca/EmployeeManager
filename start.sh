@@ -1,5 +1,7 @@
 #!/bin/bash
-sleep 2 # wait for postgres to be ready
+until nc -z postgres 5432
+  sleep 1
+done
 bundle exec rails db:setup
 bundle exec rails db:migrate
 bundle exec rails db:seed
